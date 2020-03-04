@@ -11,7 +11,8 @@ namespace pandas {
 namespace fs = std::experimental::filesystem;
 
 template <typename... DType>
-[[nodiscard]] DataFrame read_csv(const fs::path &filepath) {
+[[nodiscard("unsaved DataFrame read from csv")]]
+ DataFrame read_csv(const fs::path &filepath) {
     std::cout << "reading " << filepath << "... " << std::flush;
     boost::timer::auto_cpu_timer t{3, "%w seconds\n"};
     std::ifstream ifs{filepath};

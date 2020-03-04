@@ -14,7 +14,7 @@ namespace pandas {
 
 class DataFrame {
 public:
-    DataFrame(std::vector<series> &&data, std::vector<std::string> &&cols, series &&idx = make_series<std::size_t>({})) noexcept : values{data}, columns{cols}, index{idx} {}
+    [[nodiscard]] DataFrame(std::vector<series> &&data, std::vector<std::string> &&cols, series &&idx = make_series<std::size_t>({})) noexcept : values{data}, columns{cols}, index{idx} {}
     template <typename T>
     DataFrame loc(const T &start, const T &stop) const;
     DataFrame iloc(const std::vector<std::size_t> &ib) const;

@@ -2,6 +2,7 @@
 
 #include <cassert>
 #include <cmath>
+#include <concepts>
 #include <execution>
 #include <iostream>
 #include <memory>
@@ -39,10 +40,15 @@ private:
 };
 
 template <typename T>
+concept Numeric = requires(T v) {
+    { v } -> std::convertible_to<double>;
+};
+
+template <Numeric T>
 class Series : public SeriesBase {
     friend class DataFrame;
 public:
-    Series(std::vector<T> &&data) noexcept : values{data} {}
+    [[nodiscard]] Series(std::vector<T> &&data) noexcept : values{data} {}
     void emplace_back(std::istream &is) override;
     series iloc(const std::vector<std::size_t> &ib) override;
     series iloc(const std::vector<bool> &ib) override;

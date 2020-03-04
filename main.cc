@@ -11,7 +11,6 @@ int main() {
     constexpr auto market_close = 1'518'210'000'000'000L; // 2018-02-09 16:00
     constexpr auto delta = duration_cast<microseconds>( 5s ).count();
 
-    // only supports numeric columns
     auto df = pd::read_csv<long, int, double, int, double, int>("quote.csv");
     df.set_index("recv_time");
     df = df[{"security_id", "bid_price", "ask_price"}];

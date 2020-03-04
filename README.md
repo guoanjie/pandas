@@ -3,6 +3,11 @@ This project is for me to practice using the new features of modern C++, by re-i
 
 ### C++20 core language features
 - init-statements for range-based for
+- `[[nodiscard]]` with message
+- DR: `[[nodiscard]]` for constructors
+
+### C++20 library features
+- Concepts library
 
 ### C++17 core language features
 - Fold Expressions
